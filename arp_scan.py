@@ -25,9 +25,11 @@ def main():
     # print the stuff
     for row in arp_list:
         if len(row) != 0:
+            print("\n")
             print("IP Address\t:", row[0])
             print("MAC ID\t\t:", row[1])
             print("Manufacturer\t:", row[2])
+           
         else:
             break
 
