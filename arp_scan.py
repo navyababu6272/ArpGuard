@@ -10,6 +10,8 @@ url = "http://macvendors.co/api/"
 
 # the main function
 def main():
+  
+
     # run the command
     arp_scan = subprocess.run(
         ["arp-scan", "-l"],
@@ -30,14 +32,16 @@ def main():
     for row in arp_list:
         if len(row) != 0:
            
-            print("IP Address\t:", row[0])
+            #print("IP Address\t:", row[0])
             print("MAC ID\t\t:", row[1])
             print("\n")
             
             
         else:
             break
-           
+    
+                 
+        
     for row in arp_list:
         if len(row) != 0:
             lst=row[1]
@@ -45,21 +49,37 @@ def main():
             response = urllib2.urlopen( request )
             reader = codecs.getreader("utf-8")
             obj = json.load(reader(response))
-            mac=(obj['result']['mac_prefix']);
+            mac=[obj['result']['mac_prefix']];
             vendor=(obj['result']['company']);
-            print("--------------------------------------------")
-            print(" MAC Prefix:",mac)
-            print("Vendor is:",vendor)
-            print("--------------------------------------------")
-            #print(type(c))
-            '''tinylist = ['Microsoft Corporation', 'Hewlett Packard']
-            for item in c:
-                for item1 in tinylist:
+            '''print("--------------------------------------------")
+            print("MAC Prefix:",mac)
+            print("Vendor:",vendor)
+            print("--------------------------------------------")'''
+            
+            file = open("phone.txt","r")
+            values=[]
+            lst=[]
+            for line in file:
+                if len(line) != 0:
+                    values = line.split()
+                    lst=[(values[0])]
+                    
+                else:
+                    break
+            for item in mac:
+                for item1 in lst:
                     if item == item1:
-                        print (item)
+                        print ("is a mobile")
                     else:
-                        print ("Not a mobile")'''
- 
+                        print ("Not a mobile")        
+                    
+        else:
+            break
+      
+            
+           
+            
+          
     
     #print company address
            #print (obj['result']['address']);
