@@ -39,7 +39,7 @@ def main():
             break
     #mac Vendor lookup
     for row in arp_list:
-
+    
         if len(row) != 0:
             phone=[]
             lst=row[1]
@@ -47,22 +47,27 @@ def main():
             response = urllib2.urlopen( request )
             reader = codecs.getreader("utf-8")
             obj = json.load(reader(response))
-            mac=(obj['result']['mac_prefix']);
-            vendor=(obj['result']['company']);
-            phone=[mac]
-            #printing mac prefix and vendor name
-            print("--------------------------------------------")
-            print("MAC Prefix:",mac)
-            print("Vendor:",vendor)
-            print("--------------------------------------------")
 
-            #opening mobile_mac file  
+ 
+ 
+            try:
+            	mac=(obj['result']['mac_prefix']);
+            	vendor=(obj['result']['company']);
+            	phone=[mac]
+            #printing mac prefix and vendor name
+            	print("--------------------------------------------")
+            	print("MAC Prefix:",mac)
+            	print("Vendor:",vendor)
+            	print("--------------------------------------------")
+   
+            except KeyError:
+ 
+            	print("Cannot find vendor!") 
             # define empty list
             mob = []
            
-
             # open file and read the content in a list
-            with open('phone.txt', 'r') as filehandle:  
+            with open('mobile-mac_only.txt', 'r') as filehandle:  
                 filecontents = filehandle.readlines()
 
                 for line in filecontents:

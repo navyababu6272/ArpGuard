@@ -1,8 +1,0 @@
- '''tinylist = ['Microsoft Corporation', 'Hewlett Packard']
-            for item in c:
-                for item1 in tinylist:
-                    if item == item1:
-                        print (item)
-                    else:
-                        print ("Not a mobile")'''
-                
