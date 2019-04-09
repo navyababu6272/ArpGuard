@@ -1,0 +1,11 @@
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+iptables -P FORWARD DROP
+iptables -A FORWARD -m mac --mac-source 00:00:00:00:00:00 -j ACCEPT
+
+
+
+arptables -A INPUT --src-mac <mac> --opcode 1 -j DROP
+arptables -A OUTPUT --dst-mac <mac> --opcode 1 -j DROP
+
+
