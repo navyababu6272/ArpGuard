@@ -27,17 +27,22 @@ def main():
 
     # the scanned MACs starts from third row
     arp_list = arp_list[2:]
-
+    print("\n")
+    print("# STEP 1 : PRINTING THE IP AND MAC OF ALL THE DEVICES CONNECTED #")
+    print("\n")
     # print the stuff
     for row in arp_list:
         if len(row) != 0:
-           
+            
             print("IP Address\t:", row[0])
             print("MAC ID\t\t:", row[1])
-            print("\n")
+            print("_____________________________________________________")
         else:
             break
     #mac Vendor lookup
+    print("\n")
+    print("# STEP 2 :IDENTIFYING THE VENDORS AND MAC PREFIX OF ALL THE DEVICES CONNECTED #")
+    print("\n")
     for row in arp_list:
     
         if len(row) != 0:
@@ -61,11 +66,11 @@ def main():
             	print("--------------------------------------------")
    
             except KeyError:
- 
+                
             	print("Cannot find vendor!") 
+                
             # define empty list
             mob = []
-           
             # open file and read the content in a list
             with open('mobile-mac_only.txt', 'r') as filehandle:  
                 filecontents = filehandle.readlines()
@@ -82,9 +87,12 @@ def main():
             #identifying mobiles connected in wifi
                 
                 for item in mob:                     #mac contains list of mac_prefix of device connected to network
-                    for item1 in phone:                #phone contains mac_prefixof all mobile phones
+                    for item1 in phone:              #phone contains mac_prefixof all mobile phones
                        if item == item1:
-                           print ("This is a mobile and he mac prefix is",item)
+                           print("\n")
+                           print("# STEP 3 SUCCESFULL  SMART PHONE IDENTIFIED #")
+                           print("\n")
+                           print ("Mac prefix of the smartphone:",item)
                       
                  
         else:
